@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button';
 import * as S from './styles';
 
 const GenreBox = () => {
@@ -9,8 +10,18 @@ const GenreBox = () => {
       </S.Title>
       <S.FilterText>Filtre por: </S.FilterText>
       <S.Genres>
-        <button>Teste</button>
-        <button>Teste</button>
+        <Button>Ação</Button>
+        <Button>Aventura</Button>
+        <Button>Animação</Button>
+        <Button>Comédia</Button>
+        <Button>Crime</Button>
+        <Button>Documentário</Button>
+        <Button>Drama</Button>
+        <Button>Família</Button>
+        <Button>Fantasia</Button>
+        <Button>História</Button>
+        <Button>Terror</Button>
+        
       </S.Genres>
     </S.Container>
   );

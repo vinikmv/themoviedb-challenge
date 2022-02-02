@@ -55,9 +55,13 @@ export const FilterText = styled.h4`
 `;
 
 export const Genres = styled.div`
+  text-align: center;
+  width: 70%;
+
   ${media.lessThan('medium')`
+    margin: 0;
     text-align: left;
-    width: 40vh;
+    width: 50vh;
     padding-left: 16px
   `}
 `;
