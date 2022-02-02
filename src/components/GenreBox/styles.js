@@ -14,14 +14,10 @@ export const Container = styled.section`
   `}
 
   ${media.lessThan('medium')`
-  height: 100vh;
-  width: 100vh;
-`}
+    height: 100%;
+    padding-bottom: 20px;
+  `}
 `;
-
-export const GenreContainer = styled.div`
-
-`
 
 export const Title = styled.h1`
   color: #ffffff;
@@ -35,7 +31,7 @@ export const Title = styled.h1`
     font-size: 24px;
     line-height: 28px;
     text-align: left;
-    width: 40vh;
+    width: 60vh;
     padding-top: 40px;
     padding-left: 16px
   `}
@@ -49,19 +45,17 @@ export const FilterText = styled.h4`
 
   ${media.lessThan('medium')`
     text-align: left;
-    width: 40vh;
+    width: 60vh;
     padding-left: 16px
   `}
 `;
 
 export const Genres = styled.div`
   text-align: center;
-  width: 70%;
+  width: 100%;
 
   ${media.lessThan('medium')`
     margin: 0;
     text-align: left;
-    width: 50vh;
-    padding-left: 16px
   `}
 `;
