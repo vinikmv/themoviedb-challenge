@@ -10,7 +10,7 @@ export const Container = styled.div`
 `}
 `;
 
-export const MovieImage = styled.img`
+export const Image = styled.img`
   border-radius: 4px;
   width: 100%;
 
@@ -20,14 +20,14 @@ export const MovieImage = styled.img`
 `}
 `;
 
-export const MovieTitle = styled.h3`
+export const Title = styled.h3`
 padding-top: 10px;
   font-size: 16px;
   line-height: 24px;
   color: #000000;
 `;
 
-export const MovieReleaseDate = styled.h4`
+export const Subtitle = styled.h4`
   font-size: 14px;
   line-height: 24px;
   color: #646464;

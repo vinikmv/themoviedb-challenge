@@ -1,19 +1,19 @@
 import React from 'react';
-import Movie from '../Movie';
+import Card from '../Card';
 import * as S from './styles';
 
 const MovieList = () => {
   return (
     <S.Container>
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
-      <Movie />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
     </S.Container>
   );
 };
