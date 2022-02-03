@@ -3,17 +3,20 @@ import media from 'styled-media-query';
 
 import * as CardStyles from '../Card/styles';
 
-export const Container = styled.div`
+export const MovieSummary = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #2d0c5e;
   height: 600px;
   width: 100%;
   color: #ffffff;
-`;
-export const Wrapper = styled.div`
-  display: flex;
   position: relative;
+
+  ${media.lessThan('medium')`
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+  `}
 `;
 
 export const Poster = styled.img`
@@ -23,17 +26,39 @@ export const Poster = styled.img`
   top: 72px;
   left: 112px;
   border-radius: 8px;
+
+  ${media.lessThan('medium')`
+    width: 186px;
+    height: 279px;
+    position: static;
+    padding-top: 34px;
+
+  `}
 `;
 export const MovieDetails = styled.section`
   padding-left: 528px;
   padding-top: 72px;
+
+  ${media.lessThan('medium')`
+    padding-left: 16px;
+  `}
 `;
 export const MovieTitle = styled.h1`
   padding-bottom: 8px;
+
+  ${media.lessThan('medium')`
+  padding-bottom: 3px;
+  `}
 `;
-export const MovieInformation = styled.span`
+export const MovieInformation = styled.div`
   font-size: 18px;
   line-height: 24px;
+
+  ${media.lessThan('medium')`
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+  `}
 `;
 export const Rating = styled.div`
   padding-bottom: 32px;
@@ -56,8 +81,11 @@ export const Overview = styled.div`
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;
-    letter-spacing: -0, 5%;
   }
+
+  ${media.lessThan('medium')`
+    padding-right: 14px;
+  `}
 `;
 export const MovieCrew = styled.div`
   display: flex;
@@ -82,20 +110,27 @@ export const MovieCrew = styled.div`
   }
 `;
 
-export const MovieCast = styled.div`
+export const OtherInformation = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 74px;
   padding-left: 112px;
   padding-right: 97px;
 
-  
+  ${media.lessThan('medium')`
+    padding-left: 16px;
+    padding-right: 0;
+
+    h2 {
+      padding-bottom: 10px;
+    }
+  `}
+
   h2 {
+    padding-top: 74px;
     font-size: 28px;
     line-height: 32px;
     padding-bottom: 24px;
   }
-
 `;
 
 export const WrapperCast = styled.div`
@@ -103,23 +138,25 @@ export const WrapperCast = styled.div`
   flex-wrap: nowrap;
   overflow: auto;
   padding-bottom: 26px;
-  padding-right: 26px;
-  
+  gap: 26px;
+
   ${CardStyles.Container} {
     min-width: 191px;
     min-height: 336px;
-    margin-right: 16px;
-    margin-left: 5px;
+    gap: 16px;
     padding: 8px;
 
-    /* border: 1px solid #ccc; */
     border-radius: 4px;
     box-shadow: 0px 4px 4px 0px #00000040;
+
+    &:first-child {
+      margin-left: 5px;
+    }
   }
 
   ${CardStyles.Image} {
     max-width: 175px;
-    max-width: 222px;
+    max-height: 222px;
   }
 
   ${CardStyles.Title} {
@@ -127,7 +164,32 @@ export const WrapperCast = styled.div`
   }
 
   ${CardStyles.Subtitle} {
+    font-size: 16px;
     font-weight: 400;
     max-width: 174px;
+    height: 48px;
   }
+`;
+
+export const MovieTrailer = styled.video`
+  max-width: 907px;
+  max-height: 510px;
+  width: auto;
+  height: auto;
+  background-color: grey;
+
+  ${media.lessThan('medium')`
+      width: 324px;
+      min-height: 182px;
+  `}
+`;
+
+export const MovieRecommendations = styled.div`
+  display: inline-flex;
+  gap: 32px;
+
+  ${media.lessThan('medium')`
+      flex-wrap: wrap;
+      gap: 16px;
+  `}
 `;

@@ -5,14 +5,24 @@ import Card from '../Card';
 const MovieDetails = () => {
   return (
     <>
-      <S.Container>
-        <S.Wrapper>
+      <S.MovieSummary>
           <S.Poster src="https://www.themoviedb.org/t/p/w1280/swS3PsQYD3wGEWZwtgpUlGRMv1G.jpg"></S.Poster>
           <S.MovieDetails>
             <S.MovieTitle>Deadpool (2016)</S.MovieTitle>
             <S.MovieInformation>
-              16 anos • 11/02/2016 (BR) • Ação, Aventura, Comédia, Ficção
-              científica • 1h 47m
+              <span>
+              16 anos 
+              </span>
+              <span>
+              11/02/2016 (BR)
+              </span>
+              <span>
+              Ação, Aventura, Comédia, Ficção
+              científica
+              </span>
+              <span>
+              1h 47m
+              </span>
             </S.MovieInformation>
             <S.Rating>
               <span>Avaliação dos usuários</span>
@@ -37,9 +47,8 @@ const MovieDetails = () => {
               <Card title="Rob Liefeld" subtitle="Characters" />
             </S.MovieCrew>
           </S.MovieDetails>
-        </S.Wrapper>
-      </S.Container>
-      <S.MovieCast>
+      </S.MovieSummary>
+      <S.OtherInformation>
         <h2>Elenco Original</h2>
         <S.WrapperCast>
           <Card
@@ -108,13 +117,43 @@ const MovieDetails = () => {
             src="https://www.themoviedb.org/t/p/w276_and_h350_face/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg"
           />
         </S.WrapperCast>
-        {/* 
-      <S.MovieTrailer></S.MovieTrailer>
-      <S.MovieRecommendations>
+        <h2>Vídeo</h2>
+        <S.MovieTrailer></S.MovieTrailer>
 
-        <Card />
-      </S.MovieRecommendations> */}
-      </S.MovieCast>
+          <h2>Recomendações</h2>
+        <S.MovieRecommendations>
+          <Card
+            title="Ryan Reynolds"
+            subtitle="Wade Wilson / Deadpool"
+            src="https://www.themoviedb.org/t/p/w276_and_h350_face/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg"
+          />
+          <Card
+            title="Ryan Reynolds"
+            subtitle="Wade Wilson / Deadpool"
+            src="https://www.themoviedb.org/t/p/w276_and_h350_face/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg"
+          />
+          <Card
+            title="Ryan Reynolds"
+            subtitle="Wade Wilson / Deadpool"
+            src="https://www.themoviedb.org/t/p/w276_and_h350_face/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg"
+          />
+          <Card
+            title="Ryan Reynolds"
+            subtitle="Wade Wilson / Deadpool"
+            src="https://www.themoviedb.org/t/p/w276_and_h350_face/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg"
+          />
+          <Card
+            title="Ryan Reynolds"
+            subtitle="Wade Wilson / Deadpool"
+            src="https://www.themoviedb.org/t/p/w276_and_h350_face/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg"
+          />
+          <Card
+            title="Ryan Reynolds"
+            subtitle="Wade Wilson / Deadpool"
+            src="https://www.themoviedb.org/t/p/w276_and_h350_face/4SYTH5FdB0dAORV98Nwg3llgVnY.jpg"
+          />
+        </S.MovieRecommendations>
+      </S.OtherInformation>
     </>
   );
 };
