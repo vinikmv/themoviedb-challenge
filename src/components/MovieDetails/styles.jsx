@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 
 import * as CardStyles from '../Card/styles';
@@ -7,7 +7,8 @@ export const MovieSummary = styled.div`
   display: flex;
   flex-direction: row;
   background-color: #2d0c5e;
-  height: 600px;
+  height: auto;
+  min-height: 600px;
   width: 100%;
   color: #ffffff;
   position: relative;
@@ -20,6 +21,10 @@ export const MovieSummary = styled.div`
 `;
 
 export const Poster = styled.img`
+  ${({ src }) => css`
+    background-image: url(${src});
+  `}
+
   height: 574px;
   width: 383px;
   position: absolute;
@@ -28,8 +33,8 @@ export const Poster = styled.img`
   border-radius: 8px;
 
   ${media.lessThan('medium')`
-    width: 186px;
-    height: 279px;
+    min-width: 186px;
+    min-height: 279px;
     position: static;
     padding-top: 34px;
 
@@ -38,7 +43,7 @@ export const Poster = styled.img`
 export const MovieDetails = styled.section`
   padding-left: 528px;
   padding-top: 72px;
-
+  height: auto;
   ${media.lessThan('medium')`
     padding-left: 16px;
   `}
@@ -58,6 +63,10 @@ export const MovieInformation = styled.div`
     display: flex;
     flex-direction: column;
     width: 328px;
+
+    span:nth-child(even) {
+      display: none;
+    }:
   `}
 `;
 export const Rating = styled.div`
@@ -92,6 +101,10 @@ export const MovieCrew = styled.div`
   flex-direction: row;
   max-width: 696px;
   flex-wrap: wrap;
+
+  ${media.lessThan('medium')`
+    padding-right: 14px;
+  `}
 
   ${CardStyles.Container} {
     margin-right: 33px;
@@ -176,7 +189,7 @@ export const MovieTrailer = styled.video`
   max-height: 510px;
   width: auto;
   height: auto;
-  background-color: grey;
+  /* background-color: grey; */
 
   ${media.lessThan('medium')`
       width: 324px;
@@ -187,9 +200,15 @@ export const MovieTrailer = styled.video`
 export const MovieRecommendations = styled.div`
   display: inline-flex;
   gap: 32px;
+  justify-content: start;
+  flex-wrap: wrap;
 
+  ${CardStyles.Container} {
+    min-width: 176px;
+    min-height: 264px;
+  }
   ${media.lessThan('medium')`
-      flex-wrap: wrap;
       gap: 16px;
+      justify-content: center;
   `}
 `;

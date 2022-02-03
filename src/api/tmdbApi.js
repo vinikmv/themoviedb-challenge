@@ -8,9 +8,9 @@ const tmdbApi = {
     return axiosClient.get(url, {params})
   },
 
-  getMovieVideos: (id) => {
+  getMovieVideos: (id, params) => {
     const url = `movie/${id}/videos`;
-    return axiosClient.get(url, {params})
+    return axiosClient.get(url, params)
   },
 
   getMovieGenres: (params) => {
@@ -18,9 +18,9 @@ const tmdbApi = {
     return axiosClient.get(url, params)
   },
 
-  getMovieDetails: (id) => {
+  getMovieDetails: (id, params) => {
     const url = `movie/${id}`;
-    return axiosClient.get(url, {params})
+    return axiosClient.get(url, params)
   },
 
   getMovieCredits: (id) => {
@@ -28,11 +28,16 @@ const tmdbApi = {
     return axiosClient.get(url, {params})
   },
 
-  getMovieRecommendations: (id) => {
+  getMovieRecommendations: (id, params) => {
     const url = `movie/${id}/recommendations`;
-    return axiosClient.get(url, {params})
+    return axiosClient.get(url, params)
   },
 
+  
+  getMovieReleaseDates: (id) => {
+    const url = `movie/${id}/release_dates`;
+    return axiosClient.get(url, {params})
+  },
 }
 
 export default tmdbApi;
