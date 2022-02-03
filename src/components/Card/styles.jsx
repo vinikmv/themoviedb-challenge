@@ -4,6 +4,11 @@ import media from 'styled-media-query';
 export const Container = styled.div`
   width: 176px;
   height: 100%;
+
+  a {
+    text-decoration: none;
+  }
+
   ${media.lessThan('medium')`
     width: 156px;
     padding-bottom: 20px;

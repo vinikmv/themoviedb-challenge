@@ -6,10 +6,10 @@ export const Container = styled.div`
   flex-wrap: wrap;
   margin: 29px 112px;
   gap: 32px;
+  justify-content: center;
 
   ${media.lessThan('medium')`
     margin: 29px 16px;
     gap: 16px;
-    justify-content:flex-start ;
 `}
 `;

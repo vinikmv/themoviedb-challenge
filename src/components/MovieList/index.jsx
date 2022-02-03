@@ -27,6 +27,8 @@ const MovieList = () => {
           return (
             <Card
               key={item.id}
+              id={item.id}
+              isMovie={true}
               src={apiConfig.imagemOriginal(item.poster_path)}
               title={item.title}
               subtitle={formatDate(item.release_date)}
