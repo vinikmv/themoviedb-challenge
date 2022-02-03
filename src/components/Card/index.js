@@ -4,9 +4,9 @@ import * as S from './styles';
 const Card = ({ src, title, subtitle }) => {
   return (
     <S.Container>
-      <S.Image src={src}></S.Image>
-      <S.Title>{title}</S.Title>
-      <S.Subtitle>{subtitle}</S.Subtitle>
+      {!!src && <S.Image src={src}></S.Image>}
+      {!!title && <S.Title>{title}</S.Title>}
+      {!!subtitle && <S.Subtitle>{subtitle}</S.Subtitle>}
     </S.Container>
   );
 };
