@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../Button';
+import tmdbApi from '../../api/tmdbApi';
 import * as S from './styles';
 
 const GenreBox = () => {
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    const params = { language: 'pt-br' };
+    const genreList = async () => {
+      let response = await tmdbApi.getMovieGenres({ params });
+      setGenres(response.genres);
+    };
+    genreList();
+  }, []);
   return (
     <S.Container>
       <S.Title>
@@ -10,18 +21,10 @@ const GenreBox = () => {
       </S.Title>
       <S.FilterText>Filtre por: </S.FilterText>
       <S.Genres>
-        <Button>Ação</Button>
-        <Button>Aventura</Button>
-        <Button>Animação</Button>
-        <Button>Comédia</Button>
-        <Button>Crime</Button>
-        <Button>Documentário</Button>
-        <Button>Drama</Button>
-        <Button>Família</Button>
-        <Button>Fantasia</Button>
-        <Button>História</Button>
-        <Button>Terror</Button>
-        
+        {!!genres &&
+          genres.map((genre) => {
+            return <Button key={genre.id}>{genre.name}</Button>;
+          })}
       </S.Genres>
     </S.Container>
   );

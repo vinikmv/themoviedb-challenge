@@ -13,9 +13,9 @@ const tmdbApi = {
     return axiosClient.get(url, {params})
   },
 
-  getMovieGenres: (id) => {
+  getMovieGenres: (params) => {
     const url = `/genre/movie/list`;
-    return axiosClient.get(url, {params})
+    return axiosClient.get(url, params)
   },
 
   getMovieDetails: (id) => {
