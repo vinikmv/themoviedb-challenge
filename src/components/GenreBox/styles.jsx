@@ -31,9 +31,10 @@ export const Title = styled.h1`
     font-size: 24px;
     line-height: 28px;
     text-align: left;
-    width: 60vh;
+    width:100%;
     padding-top: 40px;
-    padding-left: 16px
+    padding-left: 16px;
+    padding-right: 60px
   `}
 `;
 
@@ -57,5 +58,6 @@ export const Genres = styled.div`
   ${media.lessThan('medium')`
     margin: 0;
     text-align: left;
+    padding-right: 16px
   `}
 `;
