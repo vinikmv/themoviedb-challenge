@@ -35,6 +35,6 @@ export const IconWrapper = styled.div`
   width: 17px;
   height: 17px;
   color: #ffffff;
-  margin-left: 10px;
-  
+  margin-left: 9.67px;
+  display: flex;
 `;
