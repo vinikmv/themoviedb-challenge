@@ -3,9 +3,9 @@ import axiosClient from './axiosClient'
 const params = {params: {}}
 
 const tmdbApi = {
-  getPopularMovies: () => {
+  getPopularMovies: (params) => {
     const url = 'movie/popular';
-    return axiosClient.get(url, {params})
+    return axiosClient.get(url, params)
   },
 
   getMovieVideos: (id, params) => {
