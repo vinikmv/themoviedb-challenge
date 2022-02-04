@@ -26,7 +26,7 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.h3`
-padding-top: 10px;
+  padding-top: 10px;
   font-size: 16px;
   line-height: 24px;
   color: #000000;

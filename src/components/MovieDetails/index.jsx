@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import * as S from './styles';
-import Card from '../Card';
+import apiConfig from 'api/config';
+import tmdbApi from 'api/tmdbApi';
+import Card from 'components/Card';
+import Video from 'components/Video';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import tmdbApi from '../../api/tmdbApi';
-import apiConfig from '../../api/config';
-import Video from '../Video';
+import { formatDate, formatGenres, formatRunTime } from 'utils/formatFunctions';
+import * as S from './styles';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -49,20 +50,6 @@ const MovieDetails = () => {
     };
     getMovieRecommendations();
   }, [id]);
-
-  const formatGenres = (genres) => {
-    let auxArray = genres.map((genre) => genre.name);
-    return auxArray.join(', ');
-  };
-
-  const formatRunTime = (runtime) => {
-    return Math.floor(runtime / 60) + 'h ' + (runtime % 60) + 'min';
-  };
-
-  const formatDate = (date) => {
-    let dateAux = new Date(date);
-    return dateAux.toLocaleDateString('pt-br');
-  };
 
   return (
     <>
@@ -144,7 +131,7 @@ const MovieDetails = () => {
                     <Card
                       key={result.id}
                       title={result.title}
-                      subtitle={result.release_date}
+                      subtitle={formatDate(result.release_date)}
                       src={apiConfig.imagemOriginal(result.poster_path)}
                     />
                   );

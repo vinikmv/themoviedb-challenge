@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Button from '../Button';
-import tmdbApi from '../../api/tmdbApi';
+import tmdbApi from 'api/tmdbApi';
+import Button from 'components/Button';
+import React, { useEffect, useState } from 'react';
 import * as S from './styles';
 
 const GenreBox = () => {
@@ -23,7 +23,11 @@ const GenreBox = () => {
       <S.Genres>
         {!!genres &&
           genres.map((genre) => {
-            return <Button key={genre.id} id={genre.id}>{genre.name}</Button>;
+            return (
+              <Button key={genre.id} id={genre.id}>
+                {genre.name}
+              </Button>
+            );
           })}
       </S.Genres>
     </S.Container>

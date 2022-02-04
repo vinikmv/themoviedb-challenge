@@ -9,29 +9,29 @@ const wrapperModifiers = {
 
 export const Wrapper = styled.button`
   ${({ isActive }) => css`
-  background-color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  border: 0;
-  cursor: pointer;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 500;
-  
-  height: 40px;
-  margin-left: 12px;
-  margin-bottom: 20px;
-  text-align: center;
-  padding: 8px 16px;
-  ${isActive && wrapperModifiers.isActive()}
-  
-  &:hover {
-    background-color: rgba(209, 128, 0, 1);
-  }
-  
+    background-color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+
+    height: 40px;
+    margin-left: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 8px 16px;
+    ${isActive && wrapperModifiers.isActive()}
+
+    &:hover {
+      background-color: rgba(209, 128, 0, 1);
+    }
+
     ${media.lessThan('medium')`
   height: 32px;
   font-size: 14px;

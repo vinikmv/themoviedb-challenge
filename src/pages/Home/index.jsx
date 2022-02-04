@@ -1,16 +1,14 @@
+import GenreBox from 'components/GenreBox';
+import MovieList from 'components/MovieList';
 import React from 'react';
-import GenreBox from '../../components/GenreBox';
-import MovieList from '../../components/MovieList';
-import GlobalStateProvider from '../../utils/GlobalStateProvider';
+import GlobalStateProvider from 'utils/GlobalStateProvider';
 
 const Home = () => {
   return (
-    <>
-      <GlobalStateProvider>
-        <GenreBox />
-        <MovieList />
-      </GlobalStateProvider>
-    </>
+    <GlobalStateProvider>
+      <GenreBox />
+      <MovieList />
+    </GlobalStateProvider>
   );
 };
 

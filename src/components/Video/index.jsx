@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import tmdbApi from 'api/tmdbApi';
+import React, { useEffect, useState } from 'react';
 import * as S from './styles';
-import tmdbApi from '../../api/tmdbApi';
-import YouTube from 'react-youtube';
 
 const Video = ({ id }) => {
   const [video, setVideo] = useState(null);

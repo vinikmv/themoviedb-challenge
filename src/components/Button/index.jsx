@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
-import * as S from './styles';
 import { CloseCircle } from '@styled-icons/ionicons-sharp/CloseCircle';
-import { Context } from '../../utils/GlobalStateProvider';
+import React, { useContext } from 'react';
+import { Context } from 'utils/GlobalStateProvider';
+import * as S from './styles';
 
 const getStatus = (genres, id) => {
   genres = genres.find((item) => item.genre === id);
