@@ -10,8 +10,10 @@ const Video = ({ id }) => {
     const getMovieVideos = async () => {
       let response = await tmdbApi.getMovieVideos(id, { params });
 
-      response = response.results.find((result) =>
-        result['name'].includes('Trailer Oficial') || result['name'].includes('Trailer')
+      response = response.results.find(
+        (result) =>
+          result['name'].includes('Trailer Oficial') ||
+          result['name'].includes('Trailer')
       );
       setVideo(response);
     };
@@ -19,9 +21,14 @@ const Video = ({ id }) => {
   }, [id]);
   return (
     <>
-      <h2>Trailer</h2>
       {video && (
-        <S.YoutubeVideo videoId={video.key} title={video.name}></S.YoutubeVideo>
+        <>
+          <h2>Trailer</h2>
+          <S.YoutubeVideo
+            videoId={video.key}
+            title={video.name}
+          ></S.YoutubeVideo>
+        </>
       )}
     </>
   );
