@@ -6,20 +6,22 @@ import apiConfig from '../../api/config';
 
 const MovieList = () => {
   const [itens, setItens] = useState([]);
+  
+    useEffect(() => {
+      const params = { language: 'pt-br' };
+      const getMovieList = async () => {
+        let response = await tmdbApi.getPopularMovies({params});
+        setItens(response.results);
+      };
+      getMovieList();
+    }, []);
+    
 
   const formatDate = (data) => {
     const newDate = new Date(data)
     const month = newDate.toLocaleString('pt-br', {month: 'short'}).toUpperCase().replace('.', '')
     return `${newDate.getDay()} ${month} ${newDate.getFullYear()} `
   }
-
-  useEffect(() => {
-    const getMovieList = async () => {
-      let response = await tmdbApi.getPopularMovies();
-      setItens(response.results);
-    };
-    getMovieList();
-  }, []);
   return (
     <S.Container>
       {!!itens &&
