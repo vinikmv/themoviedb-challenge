@@ -76,8 +76,6 @@ const MovieDetails = () => {
     return dateAux.toLocaleDateString('pt-br');
   };
 
-  console.log('video: ', video);
-  console.log('recommendations: ', recommendations);
   return (
     <>
       {item && (
@@ -155,6 +153,7 @@ const MovieDetails = () => {
                 recommendations.results.slice(0, 6).map((result) => {
                   return (
                     <Card
+                      key={result.id}
                       title={result.title}
                       subtitle={result.release_date}
                       src={apiConfig.imagemOriginal(result.poster_path)}
