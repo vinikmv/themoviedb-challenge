@@ -23,7 +23,7 @@ const GenreBox = () => {
       <S.Genres>
         {!!genres &&
           genres.map((genre) => {
-            return <Button key={genre.id}>{genre.name}</Button>;
+            return <Button key={genre.id} id={genre.id}>{genre.name}</Button>;
           })}
       </S.Genres>
     </S.Container>
