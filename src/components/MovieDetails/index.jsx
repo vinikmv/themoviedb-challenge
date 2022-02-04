@@ -119,7 +119,7 @@ const MovieDetails = () => {
                 {credits &&
                   credits.crew.slice(0, 5).map((crew) => {
                     return (
-                      <Card title={crew.name} subtitle={crew.department} />
+                      <Card key={crew.id} title={crew.name} subtitle={crew.department} />
                     );
                   })}
               </S.MovieCrew>

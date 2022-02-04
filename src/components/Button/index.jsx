@@ -13,6 +13,7 @@ const genreReducer = (state, action) => {
           { genre: action.payload, isActive: true },
         ];
       }
+      localStorage.setItem('genres', JSON.stringify(genresArray));
       return {
         isActive: true,
       };
@@ -29,12 +30,21 @@ const genreReducer = (state, action) => {
   }
 };
 
-const initialState = {
-  genres: -1,
-  isActive: false,
-};
+const getStatus = (id) => {
+  if (localStorage.hasOwnProperty('genres')) {
+    let genres = JSON.parse(localStorage.getItem('genres'))
+    genres = genres.find((item) => item.genre === id)
+    return genres ? genres.isActive : false;
+  } else return false;
+}
 
 const Button = ({ children, id }) => {
+  const initialState = {
+    genres: id,
+    isActive: getStatus(id),
+  };
+
+
   const [state, dispatch] = useReducer(genreReducer, initialState);
   return (
     <S.Wrapper
