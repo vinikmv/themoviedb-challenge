@@ -4,6 +4,7 @@ import Card from '../Card';
 import { useParams } from 'react-router-dom';
 import tmdbApi from '../../api/tmdbApi';
 import apiConfig from '../../api/config';
+import Video from '../Video';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -11,7 +12,6 @@ const MovieDetails = () => {
   const [item, setItem] = useState(null);
   const [certification, setCertification] = useState(null);
   const [credits, setCredits] = useState(null);
-  const [video, setVideo] = useState(null);
   const [recommendations, setRecommendations] = useState(null);
 
   useEffect(() => {
@@ -39,18 +39,6 @@ const MovieDetails = () => {
       setCredits(response);
     };
     getMovieCredits();
-  }, [id]);
-
-  useEffect(() => {
-    const params = { language: 'pt-br' };
-    const getMovieVideos = async () => {
-      let response = await tmdbApi.getMovieVideos(id, { params });
-      response = response.results.find((result) =>
-        result['name'].includes('Trailer Oficial')
-      );
-      setVideo(response);
-    };
-    getMovieVideos();
   }, [id]);
 
   useEffect(() => {
@@ -130,6 +118,7 @@ const MovieDetails = () => {
                 credits.cast.slice(0, 10).map((cast) => {
                   return (
                     <Card
+                      key={cast.id}
                       title={cast.name}
                       subtitle={cast.character}
                       src={apiConfig.imagemOriginal(cast.profile_path)}
@@ -137,15 +126,15 @@ const MovieDetails = () => {
                   );
                 })}
             </S.WrapperCast>
-            <h2>Vídeo</h2>
-            {video && (
+            <Video id={id} />
+            {/* {video && (
               <S.MovieTrailer>
                 <iframe
                   title={video.name}
                   src={`https://youtube.com/embed/${video.key}`}
                 />
               </S.MovieTrailer>
-            )}
+            )} */}
 
             <h2>Recomendações</h2>
             <S.MovieRecommendations>
