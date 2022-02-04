@@ -22,9 +22,9 @@ const GenreBox = () => {
       <S.FilterText>Filtre por: </S.FilterText>
       <S.Genres>
         {!!genres &&
-          genres.map((genre) => {
+          genres.map((genre, index) => {
             return (
-              <Button key={genre.id} id={genre.id}>
+              <Button key={index} id={genre.id}>
                 {genre.name}
               </Button>
             );

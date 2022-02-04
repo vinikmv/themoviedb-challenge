@@ -29,10 +29,10 @@ const MovieList = () => {
             });
             return filtered;
           })
-          .map((item) => {
+          .map((item, index) => {
             return (
               <Card
-                key={item.id}
+                key={index}
                 id={item.id}
                 isMovie={true}
                 src={apiConfig.imagemOriginal(item.poster_path)}

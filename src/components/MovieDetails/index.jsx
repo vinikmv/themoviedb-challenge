@@ -51,6 +51,11 @@ const MovieDetails = () => {
     getMovieRecommendations();
   }, [id]);
 
+  const formatSummaryDate = (date) => {
+    let dateAux = new Date(date);
+    return dateAux.toLocaleDateString('pt-br');
+  };
+
   return (
     <>
       {item && (
@@ -67,11 +72,17 @@ const MovieDetails = () => {
                 {certification && (
                   <>
                     <span>
-                      {certification.release_dates[0].certification} anos
+                      {certification.release_dates[0].certification === ''
+                        ? certification.release_dates[1].certification + ' '
+                        : certification.release_dates[0].certification + ' '}
+                       anos 
                     </span>
-                    <span> • </span>
+                      <span> • </span>
+
                     <span>
-                      {formatDate(certification.release_dates[0].release_date)}{' '}
+                      {formatSummaryDate(
+                        certification.release_dates[0].release_date
+                      )}
                       ({certification.iso_3166_1})
                     </span>
                   </>
@@ -90,9 +101,13 @@ const MovieDetails = () => {
               </S.Overview>
               <S.MovieCrew>
                 {credits &&
-                  credits.crew.slice(0, 5).map((crew) => {
+                  credits.crew.slice(0, 5).map((crew, index) => {
                     return (
-                      <Card key={crew.id} title={crew.name} subtitle={crew.department} />
+                      <Card
+                        key={index}
+                        title={crew.name}
+                        subtitle={crew.department}
+                      />
                     );
                   })}
               </S.MovieCrew>
@@ -102,37 +117,36 @@ const MovieDetails = () => {
             <h2>Elenco Original</h2>
             <S.WrapperCast>
               {credits &&
-                credits.cast.slice(0, 10).map((cast) => {
+                credits.cast.slice(0, 10).map((cast, index) => {
                   return (
                     <Card
-                      key={cast.id}
+                      key={index}
                       title={cast.name}
                       subtitle={cast.character}
-                      src={apiConfig.imagemOriginal(cast.profile_path)}
+                      src={
+                        cast.profile_path
+                          ? apiConfig.imagemOriginal(cast.profile_path)
+                          : '/img/imageNotFound.jpg'
+                      }
                     />
                   );
                 })}
             </S.WrapperCast>
             <Video id={id} />
-            {/* {video && (
-              <S.MovieTrailer>
-                <iframe
-                  title={video.name}
-                  src={`https://youtube.com/embed/${video.key}`}
-                />
-              </S.MovieTrailer>
-            )} */}
-
             <h2>Recomendações</h2>
             <S.MovieRecommendations>
               {recommendations &&
-                recommendations.results.slice(0, 6).map((result) => {
+                recommendations.results.slice(0, 6).map((result, index) => {
                   return (
                     <Card
-                      key={result.id}
+                      key={index}
                       title={result.title}
                       subtitle={formatDate(result.release_date)}
-                      src={apiConfig.imagemOriginal(result.poster_path)}
+                      src={apiConfig.imagemOriginal(
+                        result.poster_path || result.backdrop_path
+                      )}
+                      isMovie={true}
+                      id={result.id}
                     />
                   );
                 })}

@@ -9,8 +9,9 @@ const Video = ({ id }) => {
     const params = { language: 'pt-br' };
     const getMovieVideos = async () => {
       let response = await tmdbApi.getMovieVideos(id, { params });
+
       response = response.results.find((result) =>
-        result['name'].includes('Trailer Oficial')
+        result['name'].includes('Trailer Oficial') || result['name'].includes('Trailer')
       );
       setVideo(response);
     };
