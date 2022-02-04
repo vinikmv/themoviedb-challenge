@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MovieDetails from './components/MovieDetails';
+import Footer from 'components/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
+import MovieDetails from './components/MovieDetails';
 import Home from './pages/Home';
 
 
@@ -12,6 +13,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<MovieDetails />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
   );
 };
