@@ -3,8 +3,8 @@
 > Utilizado a API do TheMovieDB
 
 ## Pré-requisitos
-> - **NPM** com versão superior ou igual que 5.6 - [Npm Download](https://www.npmjs.com/package/download)
-> 
+> - **NPM** com versão superior ou igual que 5.6 - [NPM Download](https://www.npmjs.com/package/download)
+> - **GIT** com a versão mais atual - [GIT Download](https://git-scm.com/downloads)
 > - Chave da API do The MovieDB
 
 ## Instalação
