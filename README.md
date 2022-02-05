@@ -25,7 +25,7 @@
 > Crie uma conta no TheMovieDB clicando [aqui](https://www.themoviedb.org/signup)
 > Caso já possui uma conta, realize o login clicando [aqui](https://www.themoviedb.org/login)
 > 
-> Após realizar o login, você será redirecionado para as [configurações](https://www.themoviedb.org/settings/api) do seu perfil, onde você poderá obter a chave da API (v3 auth)
+> Após realizar o login, você será redirecionado para as [configurações](https://www.themoviedb.org/settings/api) do seu perfil, onde você poderá obter a chave da API (v3 auth)  
 > Copie a Chave da API (v3 auth), vá até o arquivo .env na pasta raiz do projeto e cole o valor na variável
 >```
 >REACT_APP_TMDB_API_KEY=
