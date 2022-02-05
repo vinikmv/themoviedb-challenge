@@ -3,6 +3,7 @@ import tmdbApi from 'api/tmdbApi';
 import Card from 'components/Card';
 import Video from 'components/Video';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { formatDate, formatGenres, formatRunTime } from 'utils/formatFunctions';
 import * as S from './styles';
@@ -28,7 +29,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const getMovieCertification = async () => {
       let response = await tmdbApi.getMovieReleaseDates(id);
-      response = response.results.find((result) => result.iso_3166_1 === 'BR');
+      response = response.results.find((result) => result.iso_3166_1 === 'BR' && result.release_dates.find((item => item.certification !== '')));
       setCertification(response);
     };
     getMovieCertification();
@@ -53,13 +54,20 @@ const MovieDetails = () => {
 
   const formatSummaryDate = (date) => {
     let dateAux = new Date(date);
-    return dateAux.toLocaleDateString('pt-br');
+    return dateAux.toLocaleDateString('pt-br') + ' ';
   };
 
   return (
     <>
       {item && (
         <>
+          <Helmet>
+            <meta
+              name="description"
+              content={`Detalhes do filme ${item.title}`}
+            />
+            <title>TMDB - Detalhes do Filme</title>
+          </Helmet>
           <S.MovieSummary>
             <S.Poster
               src={apiConfig.imagemOriginal(item.poster_path)}
@@ -72,17 +80,15 @@ const MovieDetails = () => {
                 {certification && (
                   <>
                     <span>
-                      {certification.release_dates[0].certification === ''
-                        ? certification.release_dates[1].certification + ' '
-                        : certification.release_dates[0].certification + ' '}
-                       anos 
+                      {certification.release_dates.find(item => item.certification !== '').certification + ' '}
+                      anos
                     </span>
-                      <i> • </i>
+                    <i> • </i>
 
                     <span>
                       {formatSummaryDate(
-                        certification.release_dates[0].release_date
-                      )}
+                        certification.release_dates.find(item => item.release_date !== '').release_date
+                      )} 
                       ({certification.iso_3166_1})
                     </span>
                   </>
@@ -93,7 +99,16 @@ const MovieDetails = () => {
                 <span>{formatRunTime(item.runtime)}</span>
               </S.MovieInformation>
               <S.Rating>
-                <span>Avaliação dos usuários</span>
+                <S.RatingCircleWrapper>
+                  <S.RatingCircleFill ratingNumber={item.vote_average * 10}>
+                    <S.RatingCircleText>
+                      {item.vote_average * 10} %
+                    </S.RatingCircleText>
+                  </S.RatingCircleFill>
+                </S.RatingCircleWrapper>
+                <S.RatingText>
+                  <span>Avaliação dos usuários</span>
+                </S.RatingText>
               </S.Rating>
               <S.Overview>
                 <h3>Sinopse</h3>
@@ -135,8 +150,7 @@ const MovieDetails = () => {
             <Video id={id} />
             <h2>Recomendações</h2>
             <S.MovieRecommendations>
-              {recommendations &&(
-                
+              {recommendations &&
                 recommendations.results.slice(0, 6).map((result, index) => {
                   return (
                     <Card
@@ -150,7 +164,7 @@ const MovieDetails = () => {
                       id={result.id}
                     />
                   );
-                }))}
+                })}
             </S.MovieRecommendations>
           </S.OtherInformation>
         </>

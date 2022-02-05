@@ -58,25 +58,68 @@ export const MovieTitle = styled.h1`
 export const MovieInformation = styled.div`
   font-size: 18px;
   line-height: 24px;
+  margin-bottom: 17px;
 
   ${media.lessThan('medium')`
     display: flex;
     flex-direction: column;
     width: 328px;
-
+    margin-bottom: 31px;
     i {
       display: none;
     }:
   `}
 `;
-export const Rating = styled.div`
-  padding-bottom: 32px;
 
+export const Rating = styled.div`
+  margin-bottom: 32px;
+  display: inline-flex;
+  justify-content: center;
   span {
     font-size: 16px;
     line-height: 20px;
+    width: 102px;
   }
 `;
+
+export const RatingCircleWrapper = styled.div`
+  width: 60px;
+  height: 60px;
+  background-color: #42246D;
+  border-radius: 50%;
+`
+export const RatingCircleFill = styled.div`
+${({ratingNumber}) => css`
+background: conic-gradient(#14FF00, ${ratingNumber * 3.6}deg, #42246D ${ratingNumber * 3.6}deg);
+`}
+  position: relative;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  &:before {
+    content: "";
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  background-color: #42246D;
+  border-radius: 50%;
+  }
+`
+export const RatingCircleText = styled.div`
+  position: relative;
+  font-weight: bold;
+
+  color: #14FF00;
+`
+
+export const RatingText = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+`
 export const Overview = styled.div`
   max-width: 696px;
   padding-bottom: 24px;
