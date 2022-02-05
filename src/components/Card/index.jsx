@@ -7,7 +7,7 @@ const Card = ({ src, title, subtitle, isMovie = false, id }) => {
   return (
     <S.Container>
       <ConditionalLink to={link} isMovie={isMovie}>
-        {!!src && <S.Image src={src}></S.Image>}
+        {!!src && <S.Image alt={title} src={src}></S.Image>}
         {!!title && <S.Title>{title}</S.Title>}
         {!!subtitle && <S.Subtitle>{subtitle}</S.Subtitle>}
       </ConditionalLink>
