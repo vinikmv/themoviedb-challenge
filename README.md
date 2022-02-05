@@ -4,6 +4,7 @@
 
 ## Pré-requisitos
 > - **NPM** com versão superior ou igual que 5.6 - [Npm Download](https://www.npmjs.com/package/download)
+> 
 > - Chave da API do The MovieDB
 
 ## Instalação
