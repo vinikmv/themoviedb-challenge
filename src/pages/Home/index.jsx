@@ -1,7 +1,7 @@
 import GenreBox from 'components/GenreBox';
 import MovieList from 'components/MovieList';
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import GlobalStateProvider from 'utils/GlobalStateProvider';
 
 const Home = () => {

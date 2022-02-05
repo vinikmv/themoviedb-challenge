@@ -8,6 +8,9 @@ export const formatRunTime = (runtime) => {
 };
 
 export const formatDate = (data) => {
+  if (data === '' || data === null) {
+    return 'Informação indisponível';
+  }
   const newDate = new Date(data);
   const month = newDate
     .toLocaleString('pt-br', { month: 'short' })

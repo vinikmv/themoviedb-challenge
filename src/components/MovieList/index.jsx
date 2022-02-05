@@ -24,7 +24,7 @@ const MovieList = () => {
       setItens(response.results);
       setTimeout(() => {
         setIsLoading(false)
-      }, 300);
+      }, 100);
       
     };
     getMovieList();

@@ -3,7 +3,7 @@ import tmdbApi from 'api/tmdbApi';
 import Card from 'components/Card';
 import Video from 'components/Video';
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { formatDate, formatGenres, formatRunTime } from 'utils/formatFunctions';
 import * as S from './styles';
@@ -53,8 +53,8 @@ const MovieDetails = () => {
   }, [id]);
 
   const formatSummaryDate = (date) => {
-    let dateAux = new Date(date);
-    return dateAux.toLocaleDateString('pt-br') + ' ';
+      let dateAux = new Date(date);
+      return dateAux.toLocaleDateString('pt-br') + ' ';
   };
 
   return (
@@ -70,7 +70,9 @@ const MovieDetails = () => {
           </Helmet>
           <S.MovieSummary>
             <S.Poster
-              src={apiConfig.imagemOriginal(item.poster_path)}
+                      src={(item.poster_path || item.backdrop_path) ? apiConfig.imagemOriginal(
+                        item.poster_path || item.backdrop_path 
+                      ) : '/img/moviePosterNotFound.png'}
             ></S.Poster>
             <S.MovieDetails>
               <S.MovieTitle>
@@ -80,14 +82,14 @@ const MovieDetails = () => {
                 {certification && (
                   <>
                     <span>
-                      {certification.release_dates.find(item => item.certification !== '').certification + ' '}
+                      {certification.release_dates[0].certification + ' '}
                       anos
                     </span>
                     <i> • </i>
 
                     <span>
                       {formatSummaryDate(
-                        certification.release_dates.find(item => item.release_date !== '').release_date
+                        certification.release_dates[0].release_date
                       )} 
                       ({certification.iso_3166_1})
                     </span>
@@ -157,9 +159,9 @@ const MovieDetails = () => {
                       key={index}
                       title={result.title}
                       subtitle={formatDate(result.release_date)}
-                      src={apiConfig.imagemOriginal(
-                        result.poster_path || result.backdrop_path
-                      )}
+                      src={(result.poster_path || result.backdrop_path) ? apiConfig.imagemOriginal(
+                        result.poster_path || result.backdrop_path 
+                      ) : '/img/moviePosterNotFound.png'}
                       isMovie={true}
                       id={result.id}
                     />
