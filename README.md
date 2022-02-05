@@ -20,6 +20,7 @@
 > ```
 > 	npm install
 > ```
+> Aguarde a instalação das dependências do projeto.
 
 ## Configuração da Chave da API no Projeto
 > Crie uma conta no TheMovieDB clicando [aqui](https://www.themoviedb.org/signup)
