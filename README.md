@@ -21,6 +21,7 @@
 > 	npm install
 > ```
 > Aguarde a instalação das dependências do projeto.
+>
 
 ## Configuração da Chave da API no Projeto
 > Crie uma conta no TheMovieDB clicando [aqui](https://www.themoviedb.org/signup)
@@ -43,4 +44,5 @@
 > 	npm start
 > ```
 > A aplicação estará disponível para visualização em seu navegador, caso isso não aconteça automaticamente abre o navegador no seguinte endereço: _localhost:3000_
+>
 
