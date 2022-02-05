@@ -10,7 +10,6 @@ const Pagination = ({
   changePage,
   getPaginationGroup,
   pages,
-  isMobile,
 }) => {
   return (
     <S.Container>

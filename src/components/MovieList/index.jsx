@@ -30,31 +30,24 @@ const MovieList = () => {
     getMovieList();
   }, [currentPage]);
 
-  // const isLastPage = pages.
   function goToLastPage() {
     setCurrentPage(maxPages);
-    console.log('goToLastPage', currentPage);
   }
 
   function goToFirstPage() {
     setCurrentPage(1);
-    console.log('goToFirstPage', currentPage);
   }
 
   function goToPreviousPage() {
     setCurrentPage((page) => page - 1);
-    console.log('goToPreviousPage', currentPage);
   }
 
   function goToNextPage() {
-    console.log("NUMERO PAGINAS: ", maxPages)
     setCurrentPage((page) => page + 1);
-    console.log('goToNextPage', currentPage);
   }
 
   function changePage(event) {
     const pageNumber = Number(event.target.textContent);
-    console.log('changePage pageNumber', pageNumber);
     setCurrentPage(pageNumber);
   }
 
@@ -108,7 +101,6 @@ const MovieList = () => {
         changePage={changePage}
         getPaginationGroup={getPaginationGroup}
         pages={maxPages}
-        isMobile={isMobile}
       />
     </>
   );
