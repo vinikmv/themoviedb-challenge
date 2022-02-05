@@ -77,7 +77,7 @@ const MovieDetails = () => {
                         : certification.release_dates[0].certification + ' '}
                        anos 
                     </span>
-                      <span> • </span>
+                      <i> • </i>
 
                     <span>
                       {formatSummaryDate(
@@ -87,9 +87,9 @@ const MovieDetails = () => {
                     </span>
                   </>
                 )}
-                <span> • </span>
+                <i> • </i>
                 <span>{item.genres && formatGenres(item.genres)}</span>
-                <span> • </span>
+                <i> • </i>
                 <span>{formatRunTime(item.runtime)}</span>
               </S.MovieInformation>
               <S.Rating>
@@ -135,7 +135,8 @@ const MovieDetails = () => {
             <Video id={id} />
             <h2>Recomendações</h2>
             <S.MovieRecommendations>
-              {recommendations &&
+              {recommendations &&(
+                
                 recommendations.results.slice(0, 6).map((result, index) => {
                   return (
                     <Card
@@ -149,7 +150,7 @@ const MovieDetails = () => {
                       id={result.id}
                     />
                   );
-                })}
+                }))}
             </S.MovieRecommendations>
           </S.OtherInformation>
         </>

@@ -64,7 +64,7 @@ export const MovieInformation = styled.div`
     flex-direction: column;
     width: 328px;
 
-    span:nth-child(even) {
+    i {
       display: none;
     }:
   `}
