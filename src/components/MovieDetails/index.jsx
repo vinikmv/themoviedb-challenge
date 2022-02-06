@@ -86,8 +86,7 @@ const MovieDetails = () => {
                 {certification && (
                   <>
                     <span>
-                      {certification.release_dates[0].certification + ' '}
-                      anos
+                      {certification.release_dates[0].certification === 'L' ? 'Livre ' : certification.release_dates[0].certification + ' anos'}
                     </span>
                     <i> • </i>
 
