@@ -4,7 +4,11 @@ export const formatGenres = (genres) => {
 };
 
 export const formatRunTime = (runtime) => {
-  return Math.floor(runtime / 60) + 'h ' + (runtime % 60) + 'min';
+  const hour = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
+  if (hour > 0) {
+    return hour + 'h ' + minutes + 'min';
+  } else return minutes + 'min';
 };
 
 export const formatDate = (data) => {

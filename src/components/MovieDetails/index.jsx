@@ -29,7 +29,11 @@ const MovieDetails = () => {
   useEffect(() => {
     const getMovieCertification = async () => {
       let response = await tmdbApi.getMovieReleaseDates(id);
-      response = response.results.find((result) => result.iso_3166_1 === 'BR' && result.release_dates.find((item => item.certification !== '')));
+      response = response.results.find(
+        (result) =>
+          result.iso_3166_1 === 'BR' &&
+          result.release_dates.find((item) => item.certification !== '')
+      );
       setCertification(response);
     };
     getMovieCertification();
@@ -53,12 +57,12 @@ const MovieDetails = () => {
   }, [id]);
 
   const formatSummaryDate = (date) => {
-      const dateAux = new Date(date);
-      const day = dateAux.getUTCDate();
-      const month = dateAux.getMonth() + 1;
-      const year = dateAux.getFullYear();
-      
-      return `${day}/${month}/${year}`;
+    const dateAux = new Date(date);
+    const day = dateAux.getUTCDate();
+    const month = dateAux.getMonth() + 1;
+    const year = dateAux.getFullYear();
+
+    return `${day}/${month}/${year}`;
   };
 
   return (
@@ -74,9 +78,13 @@ const MovieDetails = () => {
           </Helmet>
           <S.MovieSummary>
             <S.Poster
-                      src={(item.poster_path || item.backdrop_path) ? apiConfig.imagemOriginal(
-                        item.poster_path || item.backdrop_path 
-                      ) : '/img/moviePosterNotFound.png'}
+              src={
+                item.poster_path || item.backdrop_path
+                  ? apiConfig.imagemOriginal(
+                      item.poster_path || item.backdrop_path
+                    )
+                  : '/img/moviePosterNotFound.png'
+              }
             ></S.Poster>
             <S.MovieDetails>
               <S.MovieTitle>
@@ -86,19 +94,22 @@ const MovieDetails = () => {
                 {certification && (
                   <>
                     <span>
-                      {certification.release_dates[0].certification === 'L' ? 'Livre ' : certification.release_dates[0].certification + ' anos'}
+                      {certification.release_dates.find(
+                        (item) => item.certification !== ''
+                      ).certification === 'L'
+                        ? 'Livre '
+                        : certification.release_dates[0].certification +
+                          ' anos'}
                     </span>
                     <i> • </i>
 
                     <span>
-                      {formatSummaryDate(
-                        certification.release_dates[0].release_date
-                      )} 
-                      ({certification.iso_3166_1})
+                      {item && formatSummaryDate(item.release_date)} (
+                      {certification.iso_3166_1})
                     </span>
+                    <i> • </i>
                   </>
                 )}
-                <i> • </i>
                 <span>{item.genres && formatGenres(item.genres)}</span>
                 <i> • </i>
                 <span>{formatRunTime(item.runtime)}</span>
@@ -162,9 +173,13 @@ const MovieDetails = () => {
                       key={index}
                       title={result.title}
                       subtitle={formatDate(result.release_date)}
-                      src={(result.poster_path || result.backdrop_path) ? apiConfig.imagemOriginal(
-                        result.poster_path || result.backdrop_path 
-                      ) : '/img/moviePosterNotFound.png'}
+                      src={
+                        result.poster_path || result.backdrop_path
+                          ? apiConfig.imagemOriginal(
+                              result.poster_path || result.backdrop_path
+                            )
+                          : '/img/moviePosterNotFound.png'
+                      }
                       isMovie={true}
                       id={result.id}
                     />
