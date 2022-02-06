@@ -11,10 +11,12 @@ export const formatDate = (data) => {
   if (data === '' || data === null) {
     return 'Informação indisponível';
   }
+
   const newDate = new Date(data);
+
   const month = newDate
     .toLocaleString('pt-br', { month: 'short' })
     .toUpperCase()
     .replace('.', '');
-  return `${newDate.getDay()} ${month} ${newDate.getFullYear()} `;
+  return `${newDate.getUTCDate()} ${month} ${newDate.getFullYear()} `;
 };

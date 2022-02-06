@@ -19,7 +19,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const params = { language: 'pt-br' };
     const getMovieDetails = async () => {
-      let response = await tmdbApi.getMovieDetails(id, { params });
+      const response = await tmdbApi.getMovieDetails(id, { params });
       setItem(response);
       window.scrollTo(0, 0);
     };
@@ -37,7 +37,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const getMovieCredits = async () => {
-      let response = await tmdbApi.getMovieCredits(id);
+      const response = await tmdbApi.getMovieCredits(id);
       setCredits(response);
     };
     getMovieCredits();
@@ -46,15 +46,19 @@ const MovieDetails = () => {
   useEffect(() => {
     const params = { language: 'pt-br' };
     const getMovieRecommendations = async () => {
-      let response = await tmdbApi.getMovieRecommendations(id, { params });
+      const response = await tmdbApi.getMovieRecommendations(id, { params });
       setRecommendations(response);
     };
     getMovieRecommendations();
   }, [id]);
 
   const formatSummaryDate = (date) => {
-      let dateAux = new Date(date);
-      return dateAux.toLocaleDateString('pt-br') + ' ';
+      const dateAux = new Date(date);
+      const day = dateAux.getUTCDate();
+      const month = dateAux.getMonth() + 1;
+      const year = dateAux.getFullYear();
+      
+      return `${day}/${month}/${year}`;
   };
 
   return (
