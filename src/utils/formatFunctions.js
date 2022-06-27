@@ -4,6 +4,9 @@ export const formatGenres = (genres) => {
 };
 
 export const formatRunTime = (runtime) => {
+  if (!runtime) {
+    return 
+  }
   const hour = Math.floor(runtime / 60);
   const minutes = runtime % 60;
   if (hour > 0) {

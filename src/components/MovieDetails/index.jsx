@@ -118,7 +118,7 @@ const MovieDetails = () => {
                 <S.RatingCircleWrapper>
                   <S.RatingCircleFill ratingNumber={item.vote_average * 10}>
                     <S.RatingCircleText>
-                      {item.vote_average * 10} %
+                      {Math.round(item.vote_average * 10)} %
                     </S.RatingCircleText>
                   </S.RatingCircleFill>
                 </S.RatingCircleWrapper>
