@@ -2,6 +2,9 @@
 > Projeto de uma aplicação utilizando React e Styled Components, que permite o usuário visualizar a listagem dos filmes mais populares e os detalhes de cada filme.
 > Utilizado a API do TheMovieDB
 
+# Live Demo:
+https://vkmv-moviedb-challenge.netlify.app/
+
 ## Pré-requisitos
 > - **NPM** com versão superior ou igual que 5.6 - [NPM Download](https://nodejs.org/en/download/)
 > - **GIT** com a versão mais atual - [GIT Download](https://git-scm.com/downloads)
